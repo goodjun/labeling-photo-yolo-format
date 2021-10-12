@@ -80,9 +80,13 @@ foreach ($files as $file) {
             }
         }
 
-        $image->save("{$outputDir}/{$fileName}.jpg");
+        $image->save("{$outputDir}/{$fileName}-labeled.jpg");
         $image->destroy();
+
+        copy("{$inputDir}/{$imageFile}","{$outputDir}/{$imageFile}");
     }
+
+    copy("{$inputDir}/{$file}","{$outputDir}/{$file}");
 }
 
 echo "Labeled {$labeledCount} photos." . PHP_EOL;
